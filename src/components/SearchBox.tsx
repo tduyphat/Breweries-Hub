@@ -1,5 +1,5 @@
 import React from "react";
-import SearchBarProps from "../interface/SearchBarProps";
+import SearchBarProps from "../interfaces/SearchBarProps";
 
 const SearchBox : React.FC<SearchBarProps> = ({ handleSearch }) => {
   return (

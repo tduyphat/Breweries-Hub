@@ -1,11 +1,11 @@
 import React from "react";
-import Brewery from "../interface/Brewery";
+import Brewery from "../interfaces/Brewery";
 
 const BreweryCard: React.FC<Brewery> = (brewery) => {
-  const { id, name, city } = brewery;
+  const { name, city } = brewery;
 
   return (
-    <div key={id}>
+    <div>
       <p>{name}</p>
       <p>{city}</p>
     </div>
