@@ -54,7 +54,7 @@ const BreweryDetails = () => {
             key={id}
             sx={{
               width: 500,
-              height: 350,
+              height: 400,
               backgroundColor: "#F5F5F5",
               borderRadius: "0.5em",
             }}

@@ -1,8 +1,7 @@
-import React from 'react';
-import { Grid, Container } from '@mui/material';
+import React from "react";
+import { Grid, Container } from "@mui/material";
 
 const CardsContainer = (props: any) => {
-
   const { children } = props;
 
   return (

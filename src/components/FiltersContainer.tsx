@@ -7,7 +7,7 @@ const FiltersContainer = (props: any) => {
   return (
     <React.Fragment>
       <CssBaseline />
-      <Container maxWidth="xl">
+      <Container>
         <Box
           sx={{
             marginTop: "1em",
