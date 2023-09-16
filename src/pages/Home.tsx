@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
 import axios, { AxiosError } from "axios";
-import { Link } from "react-router-dom";
 
 import Brewery from "../interfaces/Brewery";
 import BreweryCard from "../components/BreweryCard";
 import SearchBox from "../components/SearchBox";
+import FiltersContainer from "../components/FiltersContainer";
+import CardsContainer from "../components/CardsContainer";
 
 function Home() {
   const [breweries, setBreweries] = useState<Brewery[]>([]);
@@ -45,19 +46,20 @@ function Home() {
 
   return (
     <>
-      <SearchBox handleSearch={handleSearch} />
+      <FiltersContainer>
+        <SearchBox handleSearch={handleSearch} />
+      </FiltersContainer>
       {error && !loading && <p>There is an error!</p>}
 
       {!error && loading && <p>Loading...</p>}
 
-      {filteredBreweries &&
-        !loading &&
-        !error &&
-        filteredBreweries.map((brewery) => (
-          <Link to={`${brewery.id}`} key={brewery.id}>
+      {filteredBreweries && !loading && !error && (
+        <CardsContainer>
+          {filteredBreweries.map((brewery) => (
             <BreweryCard {...brewery} />
-          </Link>
-        ))}
+          ))}
+        </CardsContainer>
+      )}
     </>
   );
 }

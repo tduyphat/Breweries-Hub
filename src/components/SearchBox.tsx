@@ -1,13 +1,14 @@
 import React from "react";
+import { Input } from "@mui/material";
+
 import SearchBarProps from "../interfaces/SearchBarProps";
 
-const SearchBox : React.FC<SearchBarProps> = ({ handleSearch }) => {
+const SearchBox: React.FC<SearchBarProps> = ({ handleSearch }) => {
   return (
     <>
-      <input
-        type="search"
-        onChange={(e) => handleSearch(e)}
-        placeholder="search brewery"
+      <Input
+        placeholder="Search brewery"
+        onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleSearch(e)}
       />
     </>
   );
