@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios, { AxiosError } from "axios";
 import Box from "@mui/material/Box";
+import { SelectChangeEvent } from "@mui/material/Select";
 
 import Brewery from "../interfaces/Brewery";
 import BreweryCard from "../components/BreweryCard";
@@ -8,6 +9,7 @@ import SearchBox from "../components/SearchBox";
 import FiltersContainer from "../components/FiltersContainer";
 import CardsContainer from "../components/CardsContainer";
 import AppPagination from "../components/AppPagination";
+import ReturnsLimiter from "../components/ReturnsLimiter";
 
 function Home() {
   const [breweries, setBreweries] = useState<Brewery[]>([]);
@@ -16,12 +18,13 @@ function Home() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
+  const [returnsLimit, setReturnsLimit] = useState(50);
 
   const totalPages = Math.ceil(filteredBreweries.length / 8);
 
   useEffect(() => {
-    fetchAll();
-  }, []);
+    fetchBreweries();
+  }, [returnsLimit]);
 
   useEffect(() => {
     const filtered = breweries?.filter((brewery) =>
@@ -30,11 +33,11 @@ function Home() {
     setFilteredBreweries(filtered);
   }, [breweries, searchField]);
 
-  const fetchAll = async () => {
+  const fetchBreweries = async () => {
     setLoading(true);
     try {
       const result = await axios.get(
-        "https://api.openbrewerydb.org/v1/breweries"
+        `https://api.openbrewerydb.org/v1/breweries?per_page=${returnsLimit}`
       );
       setBreweries(result.data);
     } catch (e) {
@@ -53,17 +56,32 @@ function Home() {
     setCurrentPage(page);
   };
 
+  const handleLimitChange = (event: SelectChangeEvent<unknown>) => {
+    const newPageSize = Number(event.target.value);
+    setReturnsLimit(newPageSize);
+  };
+
   return (
     <>
       <FiltersContainer>
         <SearchBox handleSearch={handleSearch} />
+        <ReturnsLimiter
+          returnsLimit={returnsLimit}
+          handleLimitChange={handleLimitChange}
+        />
       </FiltersContainer>
       {error && !loading && <p>There is an error!</p>}
 
       {!error && loading && <p>Loading...</p>}
 
       {filteredBreweries.length === 0 && !loading && !error && (
-        <Box sx={{ display: "flex", justifyContent:"center", alignItems:"center" }}>
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
           <i>No results matched your search.</i>
         </Box>
       )}
