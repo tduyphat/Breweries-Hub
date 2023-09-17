@@ -57,31 +57,31 @@ src/
 
 In the home page of the application, the breweries are displayed in ascending order by name by default:
 
-![IMG1](./screenshots/Screenshot 2023-09-18 013730.jpg)
+![IMG1](./screenshots/Screenshot%202023-09-18%20013730.jpg)
 
 Typing in the search field will return the brewery matched the query:
 
-![IMG2](./screenshots/Screenshot 2023-09-18 013830.jpg)
+![IMG2](./screenshots/Screenshot%202023-09-18%20013830.jpg)
 
 A message will be displayed if no matched result is found:
 
-![IMG3](./screenshots/Screenshot 2023-09-18 013855.jpg)
+![IMG3](./screenshots/Screenshot%202023-09-18%20013855.jpg)
 
 The return limiter can be used to limit the breweries returned from the API. Noitice the number of pages will also change accordingly to the total breweries:
 
-![IMG4](./screenshots/Screenshot 2023-09-18 014000.jpg)
+![IMG4](./screenshots/Screenshot%202023-09-18%20014000.jpg)
 
 Clicking on the "Learn More" button on each card will take users to the details page of that brewery:
 
-![IMG5](./screenshots/Screenshot 2023-09-18 015232.jpg)
+![IMG5](./screenshots/Screenshot%202023-09-18%20015232.jpg)
 
 The contact form includes four input fields that must be filled out before submission. Successfully submitting the form will display a success message:
 
-![IMG6](./screenshots/Screenshot 2023-09-18 014125.jpg)
+![IMG6](./screenshots/Screenshot%202023-09-18%20014125.jpg)
 
-![IMG7](./screenshots/Screenshot 2023-09-18 014138.jpg)
+![IMG7](./screenshots/Screenshot%202023-09-18%20014138.jpg)
 
-![IMG8](./screenshots/Screenshot 2023-09-18 014222.jpg)
+![IMG8](./screenshots/Screenshot%202023-09-18%20014222.jpg)
 
 ## Getting Started
 
