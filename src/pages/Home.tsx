@@ -10,6 +10,7 @@ import FiltersContainer from "../components/FiltersContainer";
 import CardsContainer from "../components/CardsContainer";
 import AppPagination from "../components/AppPagination";
 import ReturnsLimiter from "../components/ReturnsLimiter";
+import BreweriesSorter from "../components/BreweriesSorter";
 
 function Home() {
   const [breweries, setBreweries] = useState<Brewery[]>([]);
@@ -18,13 +19,14 @@ function Home() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
-  const [returnsLimit, setReturnsLimit] = useState(50);
+  const [returnsLimit, setReturnsLimit] = useState(10);
+  const [sortType, setSortType] = React.useState("asc");
 
   const totalPages = Math.ceil(filteredBreweries.length / 8);
 
   useEffect(() => {
     fetchBreweries();
-  }, [returnsLimit]);
+  }, [returnsLimit, sortType]);
 
   useEffect(() => {
     const filtered = breweries?.filter((brewery) =>
@@ -37,7 +39,7 @@ function Home() {
     setLoading(true);
     try {
       const result = await axios.get(
-        `https://api.openbrewerydb.org/v1/breweries?per_page=${returnsLimit}`
+        `https://api.openbrewerydb.org/v1/breweries?sort=type,name:${sortType}&per_page=${returnsLimit}`
       );
       setBreweries(result.data);
     } catch (e) {
@@ -61,10 +63,18 @@ function Home() {
     setReturnsLimit(newPageSize);
   };
 
+  const handleSortTypeChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setSortType((event.target as HTMLInputElement).value);
+  };
+
   return (
     <>
       <FiltersContainer>
         <SearchBox handleSearch={handleSearch} />
+        <BreweriesSorter
+          sortType={sortType}
+          handleSortTypeChange={handleSortTypeChange}
+        />
         <ReturnsLimiter
           returnsLimit={returnsLimit}
           handleLimitChange={handleLimitChange}
