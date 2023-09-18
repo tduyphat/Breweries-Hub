@@ -102,7 +102,7 @@ npm install
 npm start
 ```
 
-4. Or simply access the deployed version on Netlify at: [phat-tran-breweries.netlify.app](phat-tran-breweries.netlify.app)
+4. Or simply access the deployed version on Netlify at: [https://phat-tran-breweries.netlify.app](https://phat-tran-breweries.netlify.app)
 
 
 
