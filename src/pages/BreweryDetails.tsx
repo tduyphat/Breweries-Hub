@@ -76,7 +76,7 @@ const BreweryDetails = () => {
                 <br />
                 Type: {brewery.brewery_type}
                 <br />
-                Longtitude: {brewery.longtitude || "N/A"}
+                Longitude: {brewery.longitude || "N/A"}
                 <br />
                 Latitude: {brewery.latitude || "N/A"}
                 <br />

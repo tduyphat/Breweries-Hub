@@ -5,12 +5,12 @@ interface Brewery {
   address_1: string;
   postal_code: string;
   country: string;
-  longtitude: string;
-  latitude: string;
-  phone: string;
+  longitude: string | null;
+  latitude: string | null;
+  phone: string | null;
   city: string;
   state: string;
-  website_url: string
+  website_url: string | null;
 }
 
 export default Brewery;
